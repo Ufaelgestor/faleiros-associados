@@ -93,7 +93,7 @@
     header nav a:hover { color: var(--dourado); }
 
     .hero {
-      background: linear-gradient(rgba(10,28,63,0.7), rgba(10,28,63,0.7)), url('https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=1400&q=60') center/cover;
+      background: linear-gradient(rgba(10,28,63,0.7), rgba(10,28,63,0.7)), url('assets/hero-banner.jpg') center/cover;
       color: var(--branco);
       text-align: center;
       padding: 7rem 2rem;
@@ -396,19 +396,7 @@
     if (elYear) elYear.textContent = y;
 
     // Try to load custom hero image if available
-    (function loadHeroImage(){
-      const hero = qs('.hero');
-      if (!hero) return;
-      const localImg = new Image();
-      // Expected path for the uploaded image
-      const heroPath = 'assets/hero-banner.jpg';
-      localImg.onload = () => {
-        hero.style.backgroundImage = `linear-gradient(rgba(10,28,63,0.7), rgba(10,28,63,0.7)), url('${heroPath}')`;
-        hero.classList.add('custom-bg');
-      };
-      localImg.onerror = () => { /* keep default background */ };
-      localImg.src = heroPath;
-    })();
+  // Hero já usa imagem local por padrão (assets/hero-banner.jpg); nenhum JS necessário agora.
   </script>
 </body>
 </html>
