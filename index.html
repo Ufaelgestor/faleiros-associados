@@ -50,12 +50,14 @@
       --branco: #FFFFFF;
       --cinza: #F4F4F4;
       --verde-whats: #25D366;
+      --maxw: 1100px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
     html { scroll-behavior: smooth; }
-    body { background: var(--branco); color: var(--azul-escuro); line-height: 1.6; }
+  body { background: var(--branco); color: var(--azul-escuro); line-height: 1.6; }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
 
     /* Accessibility focus */
     a:focus-visible, button:focus-visible { outline: 3px solid var(--dourado); outline-offset: 2px; border-radius: 4px; }
@@ -96,39 +98,21 @@
       background: linear-gradient(rgba(10,28,63,0.7), rgba(10,28,63,0.7)), url('assets/hero-banner.jpg') center/cover;
       color: var(--branco);
       text-align: center;
-      padding: 7rem 2rem;
+      padding: clamp(4rem, 8vw, 7rem) 2rem;
     }
   /* Caso tenhamos uma imagem local para o banner, o JS irá aplicar como background; esta classe é apenas informativa */
   .hero.custom-bg { background-position: center; background-size: cover; }
 
-    .hero h2 {
-      color: var(--dourado);
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
+  .hero h2 { color: var(--dourado); font-size: clamp(1.9rem, 5vw, 2.9rem); margin-bottom: 1rem; }
 
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
+  .hero p { font-size: clamp(1rem, 2.2vw, 1.15rem); margin-bottom: 2rem; }
 
-  .btn {
-      background: var(--dourado);
-      color: var(--azul-escuro);
-      padding: 1rem 2rem;
-      border-radius: 30px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+  .btn { background: var(--dourado); color: var(--azul-escuro); padding: 1rem 2rem; border-radius: 30px; font-weight: 600; text-decoration: none; transition: 0.3s; display: inline-flex; align-items: center; gap: .55rem; }
 
     .btn:hover { background: var(--branco); }
 
-    section {
-      padding: 4rem 2rem;
-      max-width: 1100px;
-      margin: auto;
-    }
+  section { padding: clamp(2.5rem, 6vw, 4rem) 0; }
+  section > .cards { margin-top: 1rem; }
 
     h3.section-title {
       color: var(--azul-escuro);
@@ -147,11 +131,7 @@
       margin: 10px auto;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
 
     .card {
       background: var(--cinza);
@@ -270,11 +250,16 @@
       html { scroll-behavior: auto; }
     }
 
+    /* Sticky CTA bar (mobile) */
+    .cta-sticky { position: fixed; left:0; right:0; bottom:0; background: rgba(10,28,63,.95); padding:.7rem .9rem; display:none; z-index:1300; border-top:2px solid rgba(203,175,100,.35); }
+    .cta-sticky .btn { background: var(--verde-whats); color:#fff; padding:.85rem 1.2rem; border-radius:14px; font-size:.95rem; }
+    .cta-sticky .btn svg path { fill:#fff; }
+    @media (max-width: 900px){ .cta-sticky { display:block; } }
     @media (max-width: 768px) {
       .menu-toggle { display: inline-block; }
       header nav { display: none; position: absolute; top: 64px; right: 16px; background: var(--azul-escuro); padding: 1rem; border: 1px solid rgba(203,175,100,0.3); border-radius: 10px; }
       header nav.open { display: flex; flex-direction: column; gap: .5rem; }
-      .hero h2 { font-size: 2rem; }
+      .hero h2 { font-size: 1.9rem; }
     }
   </style>
 </head>
@@ -295,33 +280,40 @@
   <section class="hero" id="inicio">
     <h2>Foi prejudicado pela banca do concurso?</h2>
     <p>Nosso escritório é referência nacional na defesa de concurseiros e servidores públicos. Já garantimos dezenas de vitórias em ações contra irregularidades de bancas.</p>
-    <a href="https://wa.me/5562981310280?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20advogado%20sobre%20meu%20concurso." class="btn" target="_blank" rel="noopener noreferrer">📲 Falar com Advogado Agora</a>
+    <a data-wa class="btn" target="_blank" rel="noopener noreferrer">
+      <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#25D366" d="M16.004 3.2c-7.05 0-12.77 5.72-12.77 12.77 0 2.25.6 4.45 1.73 6.39L3.2 28.8l6.63-1.73a12.69 12.69 0 0 0 6.17 1.62h.01c7.05 0 12.77-5.72 12.77-12.77 0-3.41-1.33-6.62-3.76-9.05A12.69 12.69 0 0 0 16.004 3.2Zm7.51 18.37c-.32.9-1.86 1.77-2.57 1.89-.66.1-1.5.15-2.42-.15-.56-.18-1.29-.42-2.22-.82-3.9-1.68-6.45-5.6-6.65-5.86-.2-.26-1.58-2.11-1.58-4.03s.97-2.85 1.32-3.24c.35-.39.77-.49 1.02-.49h.74c.24 0 .55-.09.86.66.32.77 1.09 2.67 1.18 2.86.09.19.15.41.03.66-.12.26-.18.41-.36.63-.18.21-.38.48-.54.64-.18.18-.36.39-.16.75.2.36.92 1.51 1.98 2.44 1.36 1.19 2.51 1.56 2.87 1.74.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.42.24-.36.48-.3.81-.18.33.12 2.11 1 2.47 1.18.36.18.6.27.69.42.09.15.09.87-.23 1.77Z"/></svg>
+      Falar com Advogado Agora
+    </a>
   </section>
 
   <section id="atuacao">
     <h3 class="section-title">Áreas de Atuação</h3>
+    <div class="container">
     <div class="cards">
       <div class="card"><h4>Ações contra Bancas Examinadoras</h4><p>Recursos, revisões e ações judiciais em casos de eliminação indevida ou questões mal formuladas.</p></div>
       <div class="card"><h4>Defesa do Servidor Público</h4><p>Atuação administrativa e judicial em defesa de direitos de servidores e concursados.</p></div>
       <div class="card"><h4>Indenizações e Danos Morais</h4><p>Reparação para candidatos prejudicados por erros ou irregularidades em concursos públicos.</p></div>
       <div class="card"><h4>Recursos Administrativos</h4><p>Impugnações e defesas técnicas fundamentadas na jurisprudência atualizada.</p></div>
     </div>
+    </div>
   </section>
 
   <section class="cases" id="casos">
     <h3 class="section-title">Casos de Sucesso</h3>
     <p>Veja alguns exemplos de vitórias conquistadas:</p>
+    <div class="container">
     <div class="cards">
       <div class="card"><h4>Polícia Penal MG</h4><p>Candidato eliminado no TAF foi reintegrado após vitória judicial. Justiça feita.</p></div>
       <div class="card"><h4>PM Goiás</h4><p>Questões anuladas por ambiguidade. Nomeação garantida ao candidato.</p></div>
       <div class="card"><h4>Concurso Municipal</h4><p>Erro na contagem de títulos corrigido e classificação recuperada.</p></div>
+    </div>
     </div>
   </section>
 
   <section id="contato">
     <h3 class="section-title">Entre em Contato</h3>
     <p>Fale agora com um advogado especializado e saiba seus direitos.</p>
-    <p><strong>WhatsApp:</strong> <a href="https://wa.me/5562981310280?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20advogado%20sobre%20meu%20concurso." target="_blank" rel="noopener noreferrer">(62) 98131-0280</a> &middot; <a href="tel:+5562981310280">Ligar</a></p>
+    <p><strong>WhatsApp:</strong> <a data-wa target="_blank" rel="noopener noreferrer">(62) 98131-0280</a> &middot; <a href="tel:+5562981310280">Ligar</a></p>
     <p><strong>E-mail:</strong> <a href="mailto:contato@faleiroassociadosadvogado.com.br">contato@faleiroassociadosadvogado.com.br</a></p>
     <p><strong>Endereço:</strong> Edifício Trade Center - R. 10, 250 - St. Oeste, Goiânia - GO, 74120-020</p>
     <p><strong>Instagram:</strong> <a href="https://www.instagram.com/faleiroadvocacia" target="_blank" rel="noopener noreferrer">@faleiroadvocacia</a></p>
@@ -339,12 +331,17 @@
       <button class="close-btn" aria-label="Fechar aviso" onclick="closePopup()">×</button>
       <h4 id="popup-title">⚖️ Concurseiro, atenção!</h4>
       <p>Se você foi prejudicado em um concurso por erro da banca, você pode ter direito à reclassificação ou indenização. Clique abaixo e fale agora com um advogado especialista.</p>
-      <a href="https://wa.me/5562981310280?text=Ol%C3%A1%2C%20fui%20prejudicado(a)%20em%20um%20concurso%20e%20preciso%20de%20ajuda." class="btn" target="_blank" rel="noopener noreferrer">💬 Falar no WhatsApp</a>
+      <a data-wa class="btn" target="_blank" rel="noopener noreferrer">
+        <svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#25D366" d="M16.004 3.2c-7.05 0-12.77 5.72-12.77 12.77 0 2.25.6 4.45 1.73 6.39L3.2 28.8l6.63-1.73a12.69 12.69 0 0 0 6.17 1.62h.01c7.05 0 12.77-5.72 12.77-12.77 0-3.41-1.33-6.62-3.76-9.05A12.69 12.69 0 0 0 16.004 3.2Zm7.51 18.37c-.32.9-1.86 1.77-2.57 1.89-.66.1-1.5.15-2.42-.15-.56-.18-1.29-.42-2.22-.82-3.9-1.68-6.45-5.6-6.65-5.86-.2-.26-1.58-2.11-1.58-4.03s.97-2.85 1.32-3.24c.35-.39.77-.49 1.02-.49h.74c.24 0 .55-.09 .86.66.32.77 1.09 2.67 1.18 2.86.09.19.15.41.03.66-.12.26-.18.41-.36.63-.18.21-.38.48-.54.64-.18.18-.36.39-.16.75.2.36.92 1.51 1.98 2.44 1.36 1.19 2.51 1.56 2.87 1.74.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.42.24-.36.48-.3.81-.18.33.12 2.11 1 2.47 1.18.36.18.6.27.69.42.09.15.09.87-.23 1.77Z"/></svg>
+        Falar no WhatsApp
+      </a>
     </div>
   </div>
 
   <!-- BOTÃO WHATSAPP -->
-  <a href="https://wa.me/5562981310280?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20advogado." class="whatsapp-float" title="Fale com o escritório no WhatsApp" aria-label="Abrir conversa no WhatsApp" target="_blank" rel="noopener noreferrer">💬</a>
+  <a data-wa class="whatsapp-float" title="Fale com o escritório no WhatsApp" aria-label="Abrir conversa no WhatsApp" target="_blank" rel="noopener noreferrer">
+    <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M16.004 3.2c-7.05 0-12.77 5.72-12.77 12.77 0 2.25.6 4.45 1.73 6.39L3.2 28.8l6.63-1.73a12.69 12.69 0 0 0 6.17 1.62h.01c7.05 0 12.77-5.72 12.77-12.77 0-3.41-1.33-6.62-3.76-9.05A12.69 12.69 0 0 0 16.004 3.2Zm7.51 18.37c-.32.9-1.86 1.77-2.57 1.89-.66.1-1.5.15-2.42-.15-.56-.18-1.29-.42-2.22-.82-3.9-1.68-6.45-5.6-6.65-5.86-.2-.26-1.58-2.11-1.58-4.03s.97-2.85 1.32-3.24c.35-.39.77-.49 1.02-.49h.74c.24 0 .55-.09 .86.66.32.77 1.09 2.67 1.18 2.86.09.19.15.41.03.66-.12.26-.18.41-.36.63-.18.21-.38.48-.54.64-.18.18-.36.39-.16.75.2.36.92 1.51 1.98 2.44 1.36 1.19 2.51 1.56 2.87 1.74.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.42.24-.36.48-.3.81-.18.33.12 2.11 1 2.47 1.18.36.18.6.27.69.42.09.15.09.87-.23 1.77Z"/></svg>
+  </a>
 
   <script>
     // Helpers
@@ -395,8 +392,21 @@
     const elYear = document.getElementById('year');
     if (elYear) elYear.textContent = y;
 
-    // Try to load custom hero image if available
-  // Hero já usa imagem local por padrão (assets/hero-banner.jpg); nenhum JS necessário agora.
+    // Unificar CTAs de WhatsApp
+    const waPhone = '5562981310280';
+    const waText = encodeURIComponent('Olá, gostaria de falar com um advogado sobre meu concurso.');
+    const waUrl = `https://wa.me/${waPhone}?text=${waText}`;
+    document.querySelectorAll('[data-wa]').forEach(el => { el.href = waUrl; });
+    // Sticky CTA mobile já tem data-wa na âncora
   </script>
+  <!-- Sticky CTA Mobile -->
+  <div class="cta-sticky" aria-label="Contato rápido">
+    <div class="container" style="display:flex; justify-content:center;">
+      <a data-wa class="btn" target="_blank" rel="noopener noreferrer">
+        <svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M16.004 3.2c-7.05 0-12.77 5.72-12.77 12.77 0 2.25.6 4.45 1.73 6.39L3.2 28.8l6.63-1.73a12.69 12.69 0 0 0 6.17 1.62h.01c7.05 0 12.77-5.72 12.77-12.77 0-3.41-1.33-6.62-3.76-9.05A12.69 12.69 0 0 0 16.004 3.2Zm7.51 18.37c-.32.9-1.86 1.77-2.57 1.89-.66.1-1.5.15-2.42-.15-.56-.18-1.29-.42-2.22-.82-3.9-1.68-6.45-5.6-6.65-5.86-.2-.26-1.58-2.11-1.58-4.03s.97-2.85 1.32-3.24c.35-.39.77-.49 1.02-.49h.74c.24 0 .55-.09 .86.66.32.77 1.09 2.67 1.18 2.86.09.19.15.41.03.66-.12.26-.18.41-.36.63-.18.21-.38.48-.54.64-.18.18-.36.39-.16.75.2.36.92 1.51 1.98 2.44 1.36 1.19 2.51 1.56 2.87 1.74.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.42.24-.36.48-.3.81-.18.33.12 2.11 1 2.47 1.18.36.18.6.27.69.42.09.15.09.87-.23 1.77Z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+  </div>
 </body>
 </html>
