@@ -98,6 +98,8 @@
       text-align: center;
       padding: 7rem 2rem;
     }
+  /* Caso tenhamos uma imagem local para o banner, o JS irá aplicar como background; esta classe é apenas informativa */
+  .hero.custom-bg { background-position: center; background-size: cover; }
 
     .hero h2 {
       color: var(--dourado);
@@ -392,6 +394,21 @@
     const y = new Date().getFullYear();
     const elYear = document.getElementById('year');
     if (elYear) elYear.textContent = y;
+
+    // Try to load custom hero image if available
+    (function loadHeroImage(){
+      const hero = qs('.hero');
+      if (!hero) return;
+      const localImg = new Image();
+      // Expected path for the uploaded image
+      const heroPath = 'assets/hero-banner.jpg';
+      localImg.onload = () => {
+        hero.style.backgroundImage = `linear-gradient(rgba(10,28,63,0.7), rgba(10,28,63,0.7)), url('${heroPath}')`;
+        hero.classList.add('custom-bg');
+      };
+      localImg.onerror = () => { /* keep default background */ };
+      localImg.src = heroPath;
+    })();
   </script>
 </body>
 </html>
