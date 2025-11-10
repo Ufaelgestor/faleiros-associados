@@ -100,6 +100,15 @@
       text-align: center;
       padding: clamp(4rem, 8vw, 7rem) 2rem;
     }
+    /* Versão mobile otimizada se existir hero-banner-mobile.webp (preferencial) ou .jpg */
+    @media (max-width: 768px) {
+      .hero {
+        background-image: linear-gradient(rgba(10,28,63,0.7), rgba(10,28,63,0.7)), image-set(
+          url('assets/hero-banner-mobile.webp') type('image/webp'),
+          url('assets/hero-banner-mobile.jpg') type('image/jpeg')
+        );
+      }
+    }
   /* Caso tenhamos uma imagem local para o banner, o JS irá aplicar como background; esta classe é apenas informativa */
   .hero.custom-bg { background-position: center; background-size: cover; }
 
