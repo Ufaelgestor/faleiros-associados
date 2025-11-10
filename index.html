@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Faleiros Associados – Especialistas em ações para concurseiros prejudicados por bancas examinadoras e defesa do servidor público. Atuação nacional com excelência.">
+  <title>Faleiros Associados – Defesa do Concurseiro e do Servidor Público</title>
+  <style>
+    :root {
+      --azul-escuro: #0A1C3F;
+      --dourado: #CBAF64;
+      --branco: #FFFFFF;
+      --cinza: #F4F4F4;
+      --verde-whats: #25D366;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    body { background: var(--branco); color: var(--azul-escuro); line-height: 1.6; }
+
+    header {
+      background: var(--azul-escuro);
+      color: var(--branco);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 { font-size: 1.5rem; letter-spacing: 1px; }
+
+    header nav a {
+      color: var(--branco);
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    header nav a:hover { color: var(--dourado); }
+
+    .hero {
+      background: linear-gradient(rgba(10,28,63,0.7), rgba(10,28,63,0.7)), url('https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=1400&q=60') center/cover;
+      color: var(--branco);
+      text-align: center;
+      padding: 7rem 2rem;
+    }
+
+    .hero h2 {
+      color: var(--dourado);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: var(--dourado);
+      color: var(--azul-escuro);
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover { background: var(--branco); }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h3.section-title {
+      color: var(--azul-escuro);
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    h3.section-title::after {
+      content: '';
+      width: 60px;
+      height: 3px;
+      background: var(--dourado);
+      display: block;
+      margin: 10px auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--cinza);
+      border-left: 4px solid var(--dourado);
+      padding: 2rem;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover { transform: translateY(-5px); }
+
+    .cases {
+      background: var(--azul-escuro);
+      color: var(--branco);
+      text-align: center;
+    }
+
+    .cases .section-title { color: var(--dourado); }
+
+    footer {
+      background: var(--azul-escuro);
+      color: var(--branco);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    footer a { color: var(--dourado); text-decoration: none; }
+
+    /* POP-UP */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.4s ease;
+      z-index: 2000;
+    }
+
+    .popup.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup-content {
+      background: var(--branco);
+      color: var(--azul-escuro);
+      text-align: center;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      animation: fadeIn 0.5s ease;
+      position: relative;
+    }
+
+    .popup-content h4 { color: var(--azul-escuro); margin-bottom: 1rem; }
+    .popup-content p { margin-bottom: 1.5rem; }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--azul-escuro);
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--verde-whats);
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-decoration: none;
+      font-size: 30px;
+      animation: pulse 2s infinite;
+      z-index: 1500;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37,211,102,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+
+    @media (max-width: 768px) {
+      header nav { display: none; }
+      .hero h2 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FALEIROS ASSOCIADOS</h1>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#atuacao">Atuação</a>
+      <a href="#casos">Vitórias</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <h2>Foi prejudicado pela banca do concurso?</h2>
+    <p>Nosso escritório é referência nacional na defesa de concurseiros e servidores públicos. Já garantimos dezenas de vitórias em ações contra irregularidades de bancas.</p>
+    <a href="https://wa.me/5562981310280" class="btn">📲 Falar com Advogado Agora</a>
+  </section>
+
+  <section id="atuacao">
+    <h3 class="section-title">Áreas de Atuação</h3>
+    <div class="cards">
+      <div class="card"><h4>Ações contra Bancas Examinadoras</h4><p>Recursos, revisões e ações judiciais em casos de eliminação indevida ou questões mal formuladas.</p></div>
+      <div class="card"><h4>Defesa do Servidor Público</h4><p>Atuação administrativa e judicial em defesa de direitos de servidores e concursados.</p></div>
+      <div class="card"><h4>Indenizações e Danos Morais</h4><p>Reparação para candidatos prejudicados por erros ou irregularidades em concursos públicos.</p></div>
+      <div class="card"><h4>Recursos Administrativos</h4><p>Impugnações e defesas técnicas fundamentadas na jurisprudência atualizada.</p></div>
+    </div>
+  </section>
+
+  <section class="cases" id="casos">
+    <h3 class="section-title">Casos de Sucesso</h3>
+    <p>Veja alguns exemplos de vitórias conquistadas:</p>
+    <div class="cards">
+      <div class="card"><h4>Polícia Penal MG</h4><p>Candidato eliminado no TAF foi reintegrado após vitória judicial. Justiça feita.</p></div>
+      <div class="card"><h4>PM Goiás</h4><p>Questões anuladas por ambiguidade. Nomeação garantida ao candidato.</p></div>
+      <div class="card"><h4>Concurso Municipal</h4><p>Erro na contagem de títulos corrigido e classificação recuperada.</p></div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h3 class="section-title">Entre em Contato</h3>
+    <p>Fale agora com um advogado especializado e saiba seus direitos.</p>
+    <p><strong>WhatsApp:</strong> <a href="https://wa.me/5562981310280">(62) 98131-0280</a></p>
+    <p><strong>E-mail:</strong> <a href="mailto:contato@faleiroassociadosadvogado.com.br">contato@faleiroassociadosadvogado.com.br</a></p>
+    <p><strong>Endereço:</strong> Edifício Trade Center - R. 10, 250 - St. Oeste, Goiânia - GO, 74120-020</p>
+    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/faleiroadvocacia">@faleiroadvocacia</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Faleiros Associados – Todos os direitos reservados.</p>
+    <p>Atendimento nacional | Goiânia - GO</p>
+  </footer>
+
+  <!-- POP-UP -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <button class="close-btn" onclick="closePopup()">×</button>
+      <h4>⚖️ Concurseiro, atenção!</h4>
+      <p>Se você foi prejudicado em um concurso por erro da banca, você pode ter direito à reclassificação ou indenização. Clique abaixo e fale agora com um advogado especialista.</p>
+      <a href="https://wa.me/5562981310280" class="btn">💬 Falar no WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- BOTÃO WHATSAPP -->
+  <a href="https://wa.me/5562981310280" class="whatsapp-float" title="Fale com o escritório no WhatsApp">💬</a>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('popup').classList.add('active');
+      }, 3000);
+    });
+
+    function closePopup() {
+      document.getElementById('popup').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
