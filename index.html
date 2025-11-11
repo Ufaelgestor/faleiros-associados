@@ -95,7 +95,10 @@
     header nav a:hover { color: var(--dourado); }
 
     .hero {
-      background: linear-gradient(rgba(10,28,63,0.7), rgba(10,28,63,0.7)), url('assets/hero-banner.jpg') center/cover;
+      background: linear-gradient(rgba(10,28,63,0.7), rgba(10,28,63,0.7)), image-set(
+        url('assets/hero-banner.webp') type('image/webp'),
+        url('assets/hero-banner.jpg') type('image/jpeg')
+      ) center/cover;
       color: var(--branco);
       text-align: center;
       padding: clamp(4rem, 8vw, 7rem) 2rem;
