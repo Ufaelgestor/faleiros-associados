@@ -302,10 +302,10 @@
     <h3 class="section-title">Áreas de Atuação</h3>
     <div class="container">
     <div class="cards">
-      <div class="card"><h4>Ações contra Bancas Examinadoras</h4><p>Recursos, revisões e ações judiciais em casos de eliminação indevida ou questões mal formuladas.</p></div>
-      <div class="card"><h4>Defesa do Servidor Público</h4><p>Atuação administrativa e judicial em defesa de direitos de servidores e concursados.</p></div>
-      <div class="card"><h4>Indenizações e Danos Morais</h4><p>Reparação para candidatos prejudicados por erros ou irregularidades em concursos públicos.</p></div>
-      <div class="card"><h4>Recursos Administrativos</h4><p>Impugnações e defesas técnicas fundamentadas na jurisprudência atualizada.</p></div>
+  <div class="card" data-wa-context="Ações contra Bancas Examinadoras"><h4>Ações contra Bancas Examinadoras</h4><p>Recursos, revisões e ações judiciais em casos de eliminação indevida ou questões mal formuladas.</p><a data-wa data-wa-source="atuacao_bancas" class="btn" style="margin-top:1rem;">Falar sobre Bancas</a></div>
+  <div class="card" data-wa-context="Defesa do Servidor Público"><h4>Defesa do Servidor Público</h4><p>Atuação administrativa e judicial em defesa de direitos de servidores e concursados.</p><a data-wa data-wa-source="atuacao_servidor" class="btn" style="margin-top:1rem;">Falar sobre Defesa</a></div>
+  <div class="card" data-wa-context="Indenizações e Danos Morais"><h4>Indenizações e Danos Morais</h4><p>Reparação para candidatos prejudicados por erros ou irregularidades em concursos públicos.</p><a data-wa data-wa-source="atuacao_indenizacoes" class="btn" style="margin-top:1rem;">Falar sobre Indenização</a></div>
+  <div class="card" data-wa-context="Recursos Administrativos"><h4>Recursos Administrativos</h4><p>Impugnações e defesas técnicas fundamentadas na jurisprudência atualizada.</p><a data-wa data-wa-source="atuacao_recursos" class="btn" style="margin-top:1rem;">Falar sobre Recursos</a></div>
     </div>
     </div>
   </section>
@@ -315,9 +315,12 @@
     <p>Veja alguns exemplos de vitórias conquistadas:</p>
     <div class="container">
     <div class="cards">
-      <div class="card"><h4>Polícia Penal MG</h4><p>Candidato eliminado no TAF foi reintegrado após vitória judicial. Justiça feita.</p></div>
-      <div class="card"><h4>PM Goiás</h4><p>Questões anuladas por ambiguidade. Nomeação garantida ao candidato.</p></div>
-      <div class="card"><h4>Concurso Municipal</h4><p>Erro na contagem de títulos corrigido e classificação recuperada.</p></div>
+  <div class="card" data-wa-context="Caso Polícia Penal MG"><h4>Polícia Penal MG</h4><p>Candidato eliminado no TAF foi reintegrado após vitória judicial. Justiça feita.</p><a data-wa data-wa-source="caso_policiapenal" class="btn" style="margin-top:1rem;">Tenho caso semelhante</a></div>
+  <div class="card" data-wa-context="Caso PM Goiás"><h4>PM Goiás</h4><p>Questões anuladas por ambiguidade. Nomeação garantida ao candidato.</p><a data-wa data-wa-source="caso_pmgoias" class="btn" style="margin-top:1rem;">Questões anuladas</a></div>
+  <div class="card" data-wa-context="Caso Concurso Municipal"><h4>Concurso Municipal</h4><p>Erro na contagem de títulos corrigido e classificação recuperada.</p><a data-wa data-wa-source="caso_municipal" class="btn" style="margin-top:1rem;">Erro em títulos</a></div>
+  <div class="card" data-wa-context="Caso TJ-GO Polícia Penal"><h4>Polícia Penal GO - 2º Grau</h4><p>Acórdão favorável no TJ-GO garantindo pontuação na fase de títulos. Legalidade e isonomia preservadas.</p><a data-wa data-wa-source="caso_tjgo_titulos" class="btn" style="margin-top:1rem;">Pontuação de títulos</a></div>
+  <div class="card" data-wa-context="Caso Recurso Eliminacao Indevida"><h4>Recurso - Eliminação Indevida</h4><p>Candidato reintegrado após demonstrar falha de avaliação em teste físico.</p><a data-wa data-wa-source="caso_eliminacao" class="btn" style="margin-top:1rem;">Fui eliminado indevidamente</a></div>
+  <div class="card" data-wa-context="Caso Danos Morais Concurso"><h4>Danos Morais Concurso</h4><p>Indenização por prejuízo comprovado causado por erro grosseiro da banca examinadora.</p><a data-wa data-wa-source="caso_danosmorais" class="btn" style="margin-top:1rem;">Consultar indenização</a></div>
     </div>
     </div>
   </section>
@@ -407,13 +410,15 @@
     // Unificar CTAs de WhatsApp + tracking simples
     const waPhone = '5562981310280';
     const baseText = 'Olá, gostaria de falar com um advogado sobre meu concurso.';
-    const buildWaUrl = (source='site') => {
-      const extras = ` Origem: ${source} | Página: ${location.pathname}`;
-      return `https://wa.me/${waPhone}?text=${encodeURIComponent(baseText + extras)}`;
+    const buildWaUrl = (source='site', context='') => {
+      const extras = `\nOrigem: ${source}\nContexto: ${context || 'n/d'}\nPágina: ${location.pathname}`;
+      const intro = 'Olá, vi o site Faleiros Associados e quero ajuda.';
+      return `https://wa.me/${waPhone}?text=${encodeURIComponent(intro + '\n' + baseText + extras)}`;
     };
     document.querySelectorAll('[data-wa]').forEach(el => {
       const src = el.getAttribute('data-wa-source') || 'site';
-      el.href = buildWaUrl(src);
+      const ctx = (el.closest('[data-wa-context]')?.getAttribute('data-wa-context')) || el.getAttribute('data-wa-context') || '';
+      el.href = buildWaUrl(src, ctx);
       el.addEventListener('click', () => {
         try {
           const key = `waClicks:${src}`;
@@ -421,7 +426,7 @@
           localStorage.setItem(key, String(val));
           console.debug('[WA]', src, 'clicks:', val);
         } catch(e) {}
-        el.href = buildWaUrl(src);
+        el.href = buildWaUrl(src, ctx);
       });
     });
 
