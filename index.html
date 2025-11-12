@@ -90,10 +90,14 @@
 
   /* Brand (logo) */
   .brand { display: inline-flex; align-items: center; gap: .75rem; text-decoration: none; color: inherit; line-height: 1; max-width: calc(100% - 120px); overflow: hidden; }
-  .brand-icon { height: clamp(72px, 12vw, 110px); width: auto; display: block; }
-  .brand-name { height: clamp(42px, 7vw, 72px); width: auto; display: inline-block; }
-  /* Em telas muito estreitas, ocultar o nome para não quebrar o layout */
-  @media (max-width: 420px) { .brand-name { display: none; } }
+  .brand-icon {
+    height: clamp(60px, 14vw, 90px);
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 2px 8px #cba96488);
+    margin: 0 auto;
+  }
+  /* Removido brand-name */
 
     /* Mobile menu toggle */
     .menu-toggle { display: none; background: none; border: 2px solid var(--dourado); color: var(--branco); padding: .4rem .6rem; border-radius: 8px; cursor: pointer; }
@@ -134,9 +138,39 @@
 
   .hero p { font-size: clamp(1rem, 2.2vw, 1.15rem); margin-bottom: 2rem; }
 
-  .btn { background: var(--dourado); color: var(--azul-escuro); padding: 1rem 2rem; border-radius: 30px; font-weight: 600; text-decoration: none; transition: 0.3s; display: inline-flex; align-items: center; gap: .55rem; }
+  .btn {
+    background: var(--dourado);
+    color: var(--azul-escuro);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 220px;
+    max-width: 90vw;
+  }
 
     .btn:hover { background: var(--branco); }
+
+  /* Centralizar botões */
+  .cards .btn, .cases .btn, .contact-card .btn, .contact-card .btn-whats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Reduzir arredondamento dos botões */
+  .btn, .btn-whats {
+    border-radius: 10px !important;
+  }
 
   section { padding: clamp(2.5rem, 6vw, 4rem) 0; }
   section > .cards { margin-top: 1rem; }
@@ -158,14 +192,22 @@
       margin: 10px auto;
     }
 
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+  }
 
     .card {
       background: var(--cinza);
       border-left: 4px solid var(--dourado);
       padding: 2rem;
-      border-radius: 10px;
+      border-radius: 16px;
       transition: transform 0.3s ease;
+      width: 100%;
+      max-width: 480px;
+      box-sizing: border-box;
     }
 
     .card:hover { transform: translateY(-5px); }
@@ -315,8 +357,7 @@
   <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
   <header>
     <a href="#inicio" class="brand" aria-label="Faleiros Associados - Início">
-      <img src="assets/Logo icone.png" alt="" class="brand-icon" width="34" height="34" loading="eager">
-      <img src="assets/Logo e nome.png" alt="Faleiros Associados" class="brand-name" width="160" height="22" loading="eager">
+  <img src="assets/Logo icone.png" alt="Faleiros Associados" class="brand-icon" style="height: 70px; width: auto; filter: drop-shadow(0 2px 8px #cba96488);" loading="eager">
     </a>
     <button class="menu-toggle" aria-controls="nav" aria-expanded="false" aria-label="Abrir menu">☰ Menu</button>
     <nav id="nav" role="navigation" aria-label="Navegação principal">
@@ -385,38 +426,18 @@
             <a class="chip" data-wa data-wa-source="chip_danos" data-wa-context="Indenização por Erro de Banca">Indenização</a>
           </div>
           <div class="trust">⏱️ Tempo médio de resposta: 10–30 minutos</div>
-          <form class="form" id="contato-form" novalidate>
-            <div class="row">
-              <div>
-                <label for="f-nome">Nome</label>
-                <input id="f-nome" name="nome" type="text" placeholder="Seu nome" autocomplete="name">
-              </div>
-              <div>
-                <label for="f-email">E-mail</label>
-                <input id="f-email" name="email" type="email" placeholder="Seu e-mail" autocomplete="email">
-              </div>
-            </div>
-            <div>
-              <label for="f-telefone">Telefone / WhatsApp</label>
-              <input id="f-telefone" name="telefone" type="tel" placeholder="(DDD) número" autocomplete="tel">
-            </div>
-            <div>
-              <label for="f-assunto">Assunto</label>
-              <input id="f-assunto" name="assunto" type="text" placeholder="Ex: Eliminação indevida no TAF">
-            </div>
-            <div>
-              <label for="f-mensagem">Resumo do caso</label>
-              <textarea id="f-mensagem" name="mensagem" placeholder="Descreva brevemente o ocorrido"></textarea>
-              <div class="helper">Suas informações são usadas apenas para retorno do contato.</div>
-            </div>
-            <button type="submit" class="btn" style="width:fit-content">Enviar pelo WhatsApp</button>
-          </form>
+          <!-- Formulário removido para contato direto -->
+          <div style="margin-top:2rem; text-align:center;">
+            <strong style="display:block; font-size:1.1rem; color:#0A1C3F; margin-bottom:.5rem;">Prefere contato direto?</strong>
+            <a data-wa data-wa-source="contato_principal" class="btn" style="margin-bottom:.5rem;">Falar com Advogado</a>
+            <a href="tel:+5562981310280" class="btn" style="background:#25D366;color:#fff;">Ligar agora</a>
+          </div>
         </div>
         <div>
           <p><strong>E-mail:</strong> <a href="mailto:contato@faleiroassociadosadvogado.com.br">contato@faleiroassociadosadvogado.com.br</a></p>
           <p><strong>Endereço:</strong> Edifício Trade Center - R. 10, 250 - St. Oeste, Goiânia - GO, 74120-020</p>
           <p><strong>Instagram:</strong> <a href="https://www.instagram.com/faleiroadvocacia" target="_blank" rel="noopener noreferrer">@faleiroadvocacia</a></p>
-          <p style="margin-top:1rem;color:#406343;">Atendimento nacional. Envie seu caso pelo WhatsApp e começamos por lá.</p>
+          <p style="margin-top:1rem;color:#406343; font-size:1.1rem;">Atendimento nacional, rápido e humanizado.<br>Fale agora pelo WhatsApp ou telefone e receba orientação inicial gratuita.</p>
         </div>
       </div>
     </div>
@@ -424,8 +445,8 @@
   </main>
 
   <footer>
-    <p>© <span id="year">2025</span> Faleiros Associados – Todos os direitos reservados.</p>
-    <p>Atendimento nacional | Goiânia - GO</p>
+  <p>© <span id="year">2025</span> Faleiros Associados – Todos os direitos reservados.</p>
+  <p>Atendimento nacional e especializado em concursos públicos.<br>Goiânia - GO | <a href="mailto:contato@faleiroassociadosadvogado.com.br">contato@faleiroassociadosadvogado.com.br</a> | <a href="https://www.instagram.com/faleiroadvocacia" target="_blank" rel="noopener">Instagram</a></p>
   </footer>
 
   <!-- POP-UP -->
