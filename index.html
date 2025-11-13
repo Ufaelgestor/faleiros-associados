@@ -221,6 +221,26 @@
     justify-items: center;
   }
 
+  /* Responsivo para Áreas de Atuação (4 cards) */
+  #atuacao .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 768px) {
+    #atuacao .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #atuacao .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1025px) {
+    #atuacao .cards {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
     .card {
       background: var(--cinza);
       border-left: 4px solid var(--dourado);
@@ -402,78 +422,6 @@
       </a>
     </section>
 
-    <section id="conheca-escritorio" style="background: #231f20; color: #fff; padding: 2.5rem 0 2.2rem 0;">
-      <div class="container" style="max-width: 700px; margin: 0 auto;">
-        <h2 style="text-align:center; font-size:2rem; font-weight:700; margin-bottom:2.2rem; letter-spacing:-1px;">
-          Conheça nosso escritório
-        </h2>
-        <div style="display:flex; flex-direction:column; gap:2rem; align-items:center; justify-content:center;">
-          <div style="background:#fff; border-radius:18px; box-shadow:0 4px 24px #0002; padding:1.5rem; display:flex; flex-direction:column; align-items:center; width:100%; max-width:480px;">
-            <div style="width:120px; height:120px; border-radius:16px; background:#e0e0e0; display:flex; align-items:center; justify-content:center; margin-bottom:1.2rem; overflow:hidden;">
-              <img src="assets/Faleiro.png" alt="Thalisson Faleiro" style="width:100%; height:100%; object-fit:cover; border-radius:16px; display:block;" loading="lazy">
-            </div>
-            <div style="width:100%; text-align:center;">
-              <h3 style="color:#231f20; font-size:1.25rem; font-weight:700; margin-bottom:.5rem;">Thalisson Faleiro</h3>
-              <p style="color:#406343; font-size:1.05rem; margin-bottom:1.1rem;">Advogado especialista em concursos públicos, fundador do Faleiros Associados. Reconhecido nacionalmente por sua atuação estratégica e resultados expressivos em defesa de concurseiros.</p>
-            </div>
-            <div style="display:flex; justify-content:center; gap:1.2rem; margin:1.2rem 0 0 0; width:100%; flex-wrap:wrap;">
-              <div style="background:#231f20; color:#CBAF64; border-radius:12px; padding:1.1rem 1.5rem; min-width:120px; text-align:center; font-size:1.1rem; font-weight:600;">
-                +10 anos<br><span style="font-size:.95rem; color:#fff; font-weight:400;">de experiência</span>
-              </div>
-              <div style="background:#231f20; color:#CBAF64; border-radius:12px; padding:1.1rem 1.5rem; min-width:120px; text-align:center; font-size:1.1rem; font-weight:600;">
-                9 mil+<br><span style="font-size:.95rem; color:#fff; font-weight:400;">clientes atendidos</span>
-              </div>
-            </div>
-          </div>
-          <div style="color:#fff; text-align:center; font-size:1.08rem; max-width:480px; margin:0 auto;">
-            <p>No comando do escritório, Thalisson Faleiro lidera uma equipe dedicada a garantir justiça e respeito aos direitos dos candidatos em todo o Brasil.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="atuacao">
-      <h3 class="section-title">Áreas de Atuação</h3>
-      <div class="container">
-        <div class="cards">
-          <div class="card" data-wa-context="Ações contra Bancas Examinadoras"><h4>Ações contra Bancas Examinadoras</h4><p>Recursos, revisões e ações judiciais em casos de eliminação indevida ou questões mal formuladas.</p><a data-wa data-wa-source="atuacao_bancas" class="btn" style="margin-top:1rem;">Falar sobre Bancas</a></div>
-          <div class="card" data-wa-context="Defesa do Servidor Público"><h4>Defesa do Servidor Público</h4><p>Atuação administrativa e judicial em defesa de direitos de servidores e concursados.</p><a data-wa data-wa-source="atuacao_servidor" class="btn" style="margin-top:1rem;">Falar sobre Defesa</a></div>
-          <div class="card" data-wa-context="Indenizações e Danos Morais"><h4>Indenizações e Danos Morais</h4><p>Reparação para candidatos prejudicados por erros ou irregularidades em concursos públicos.</p><a data-wa data-wa-source="atuacao_indenizacoes" class="btn" style="margin-top:1rem;">Falar sobre Indenização</a></div>
-          <div class="card" data-wa-context="Recursos Administrativos"><h4>Recursos Administrativos</h4><p>Impugnações e defesas técnicas fundamentadas na jurisprudência atualizada.</p><a data-wa data-wa-source="atuacao_recursos" class="btn" style="margin-top:1rem;">Falar sobre Recursos</a></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="conheca-escritorio" style="background: #231f20; color: #fff; padding: 2.5rem 0 2.2rem 0;">
-      <div class="container" style="max-width: 700px; margin: 0 auto;">
-        <h2 style="text-align:center; font-size:2rem; font-weight:700; margin-bottom:2.2rem; letter-spacing:-1px;">
-          Conheça nosso escritório
-        </h2>
-        <div style="display:flex; flex-direction:column; gap:2rem; align-items:center; justify-content:center;">
-          <div style="background:#fff; border-radius:18px; box-shadow:0 4px 24px #0002; padding:1.5rem; display:flex; flex-direction:column; align-items:center; width:100%; max-width:480px;">
-            <div style="width:120px; height:120px; border-radius:16px; background:#e0e0e0; display:flex; align-items:center; justify-content:center; margin-bottom:1.2rem; overflow:hidden;">
-              <img src="assets/Faleiro.png" alt="Thalisson Faleiro" style="width:100%; height:100%; object-fit:cover; border-radius:16px; display:block;" loading="lazy">
-            </div>
-            <div style="width:100%; text-align:center;">
-              <h3 style="color:#231f20; font-size:1.25rem; font-weight:700; margin-bottom:.5rem;">Thalisson Faleiro</h3>
-              <p style="color:#406343; font-size:1.05rem; margin-bottom:1.1rem;">Advogado especialista em concursos públicos, fundador do Faleiros Associados. Reconhecido nacionalmente por sua atuação estratégica e resultados expressivos em defesa de concurseiros.</p>
-            </div>
-            <div style="display:flex; justify-content:center; gap:1.2rem; margin:1.2rem 0 0 0; width:100%; flex-wrap:wrap;">
-              <div style="background:#231f20; color:#CBAF64; border-radius:12px; padding:1.1rem 1.5rem; min-width:120px; text-align:center; font-size:1.1rem; font-weight:600;">
-                +10 anos<br><span style="font-size:.95rem; color:#fff; font-weight:400;">de experiência</span>
-              </div>
-              <div style="background:#231f20; color:#CBAF64; border-radius:12px; padding:1.1rem 1.5rem; min-width:120px; text-align:center; font-size:1.1rem; font-weight:600;">
-                9 mil+<br><span style="font-size:.95rem; color:#fff; font-weight:400;">clientes atendidos</span>
-              </div>
-            </div>
-          </div>
-          <div style="color:#fff; text-align:center; font-size:1.08rem; max-width:480px; margin:0 auto;">
-            <p>No comando do escritório, Thalisson Faleiro lidera uma equipe dedicada a garantir justiça e respeito aos direitos dos candidatos em todo o Brasil.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="atuacao">
       <h3 class="section-title">Áreas de Atuação</h3>
       <div class="container">
@@ -501,6 +449,36 @@
       </div>
     </section>
 
+    <section id="conheca-escritorio" style="background: var(--azul-escuro); color: #fff; padding: 2.5rem 0 2.2rem 0;">
+      <div class="container" style="max-width: 700px; margin: 0 auto;">
+        <h2 style="text-align:center; font-size:2rem; font-weight:700; margin-bottom:2.2rem; letter-spacing:-1px;">
+          Conheça nosso escritório
+        </h2>
+        <div style="display:flex; flex-direction:column; gap:2rem; align-items:center; justify-content:center;">
+          <div style="background:#fff; border-radius:18px; box-shadow:0 4px 24px #0002; padding:1.5rem; display:flex; flex-direction:column; align-items:center; width:100%; max-width:480px;">
+            <div style="width:120px; height:120px; border-radius:16px; background:#e0e0e0; display:flex; align-items:center; justify-content:center; margin-bottom:1.2rem; overflow:hidden;">
+              <img src="assets/Faleiro.png" alt="Thalisson Faleiro" style="width:100%; height:100%; object-fit:cover; border-radius:16px; display:block;" loading="lazy">
+            </div>
+            <div style="width:100%; text-align:center;">
+              <h3 style="color:var(--azul-escuro); font-size:1.25rem; font-weight:700; margin-bottom:.5rem;">Thalisson Faleiro</h3>
+              <p style="color:#406343; font-size:1.05rem; margin-bottom:1.1rem;">Advogado especialista em concursos públicos, fundador do Faleiros Associados. Reconhecido nacionalmente por sua atuação estratégica e resultados expressivos em defesa de concurseiros.</p>
+            </div>
+            <div style="display:flex; justify-content:center; gap:1.2rem; margin:1.2rem 0 0 0; width:100%; flex-wrap:wrap;">
+              <div style="background:var(--azul-escuro); color:var(--dourado); border-radius:12px; padding:1.1rem 1.5rem; min-width:120px; text-align:center; font-size:1.1rem; font-weight:600;">
+                +10 anos<br><span style="font-size:.95rem; color:#fff; font-weight:400;">de experiência</span>
+              </div>
+              <div style="background:var(--azul-escuro); color:var(--dourado); border-radius:12px; padding:1.1rem 1.5rem; min-width:120px; text-align:center; font-size:1.1rem; font-weight:600;">
+                9 mil+<br><span style="font-size:.95rem; color:#fff; font-weight:400;">clientes atendidos</span>
+              </div>
+            </div>
+          </div>
+          <div style="color:#fff; text-align:center; font-size:1.08rem; max-width:480px; margin:0 auto;">
+            <p>No comando do escritório, Thalisson Faleiro lidera uma equipe dedicada a garantir justiça e respeito aos direitos dos candidatos em todo o Brasil.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contato">
       <h3 class="section-title">Fale com um Advogado</h3>
       <div class="container">
@@ -509,38 +487,38 @@
           <a data-wa data-wa-source="contato_principal" class="btn-whats" style="font-size:1.1rem;padding:1.1rem 1.5rem;margin-bottom:1.2rem;display:block;">💬 Falar no WhatsApp</a>
           <a href="tel:+5562981310280" class="btn" style="background:#25D366;color:#fff;font-size:1.1rem;padding:1.1rem 1.5rem;display:block;">Ligar agora</a>
         </div>
-        <div style="text-align:center;max-width:480px;margin:0 auto;">
-          <p style="margin-bottom:.5rem;"><strong>E-mail:</strong> <a href="mailto:contato@faleiroassociadosadvogado.com.br">contato@faleiroassociadosadvogado.com.br</a></p>
-          <p style="margin-bottom:.5rem;"><strong>Endereço:</strong> Edifício Trade Center - R. 10, 250 - St. Oeste, Goiânia - GO, 74120-020</p>
-          <p style="margin-bottom:1rem;"><strong>Instagram:</strong> <a href="https://www.instagram.com/faleiroadvocacia" target="_blank" rel="noopener noreferrer">@faleiroadvocacia</a></p>
-          <p style="color:#406343; font-size:1.08rem;">Atendimento nacional, rápido e humanizado.<br>Fale agora pelo WhatsApp ou telefone e receba orientação inicial gratuita.</p>
+        <div style="background:#f9f9f9;border-radius:12px;padding:1.8rem;max-width:560px;margin:0 auto;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+          <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;padding:.8rem;background:#fff;border-radius:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#0A1C3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 6l-10 7L2 6" stroke="#0A1C3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div style="flex:1;">
+              <div style="font-size:.85rem;color:#666;font-weight:500;margin-bottom:.2rem;">E-mail</div>
+              <a href="mailto:contato@faleiroassociadosadvogado.com.br" style="color:#0A1C3F;text-decoration:none;font-weight:600;font-size:.95rem;">contato@faleiroassociadosadvogado.com.br</a>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;padding:.8rem;background:#fff;border-radius:8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="#0A1C3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="#0A1C3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div style="flex:1;">
+              <div style="font-size:.85rem;color:#666;font-weight:500;margin-bottom:.2rem;">Endereço</div>
+              <div style="color:#0A1C3F;font-weight:600;font-size:.95rem;">Edifício Trade Center - R. 10, 250 - St. Oeste, Goiânia - GO, 74120-020</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:.8rem;padding:.8rem;background:#fff;border-radius:8px;margin-bottom:1.2rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#0A1C3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4" stroke="#0A1C3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="6" r="1" fill="#0A1C3F"/></svg>
+            <div style="flex:1;">
+              <div style="font-size:.85rem;color:#666;font-weight:500;margin-bottom:.2rem;">Instagram</div>
+              <a href="https://www.instagram.com/faleiroadvocacia" target="_blank" rel="noopener noreferrer" style="color:#0A1C3F;text-decoration:none;font-weight:600;font-size:.95rem;">@faleiroadvocacia</a>
+            </div>
+          </div>
+          <p style="color:#406343;font-size:1.05rem;text-align:center;line-height:1.6;margin-top:1.5rem;font-weight:500;">Atendimento nacional, rápido e humanizado.<br>Fale agora pelo WhatsApp ou telefone e receba orientação inicial gratuita.</p>
         </div>
       </div>
     </section>
-  </main>
-
-  <section class="cases" id="casos">
-    <h3 class="section-title">Casos de Sucesso</h3>
-    <p>Veja alguns exemplos de vitórias conquistadas:</p>
-    <div class="container">
-    <div class="cards">
-  <div class="card" data-wa-context="Caso Polícia Penal MG"><h4>Polícia Penal MG</h4><p>Candidato eliminado no TAF foi reintegrado após vitória judicial. Justiça feita.</p><a data-wa data-wa-source="caso_policiapenal" class="btn" style="margin-top:1rem;">Tenho caso semelhante</a></div>
-  <div class="card" data-wa-context="Caso PM Goiás"><h4>PM Goiás</h4><p>Questões anuladas por ambiguidade. Nomeação garantida ao candidato.</p><a data-wa data-wa-source="caso_pmgoias" class="btn" style="margin-top:1rem;">Questões anuladas</a></div>
-  <div class="card" data-wa-context="Caso Concurso Municipal"><h4>Concurso Municipal</h4><p>Erro na contagem de títulos corrigido e classificação recuperada.</p><a data-wa data-wa-source="caso_municipal" class="btn" style="margin-top:1rem;">Erro em títulos</a></div>
-  <div class="card" data-wa-context="Caso TJ-GO Polícia Penal"><h4>Polícia Penal GO - 2º Grau</h4><p>Acórdão favorável no TJ-GO garantindo pontuação na fase de títulos. Legalidade e isonomia preservadas.</p><a data-wa data-wa-source="caso_tjgo_titulos" class="btn" style="margin-top:1rem;">Pontuação de títulos</a></div>
-  <div class="card" data-wa-context="Caso Recurso Eliminacao Indevida"><h4>Recurso - Eliminação Indevida</h4><p>Candidato reintegrado após demonstrar falha de avaliação em teste físico.</p><a data-wa data-wa-source="caso_eliminacao" class="btn" style="margin-top:1rem;">Fui eliminado indevidamente</a></div>
-  <div class="card" data-wa-context="Caso Danos Morais Concurso"><h4>Danos Morais Concurso</h4><p>Indenização por prejuízo comprovado causado por erro grosseiro da banca examinadora.</p><a data-wa data-wa-source="caso_danosmorais" class="btn" style="margin-top:1rem;">Consultar indenização</a></div>
-    </div>
-    </div>
-  </section>
-
   </main>
 
   <footer>
   <p>© <span id="year">2025</span> Faleiros Associados – Todos os direitos reservados.</p>
   <p>Atendimento nacional e especializado em concursos públicos.<br>Goiânia - GO | <a href="mailto:contato@faleiroassociadosadvogado.com.br">contato@faleiroassociadosadvogado.com.br</a> | <a href="https://www.instagram.com/faleiroadvocacia" target="_blank" rel="noopener">Instagram</a></p>
   </footer>
-<section id="conheca-escritorio" style="background: #231f20; color: #fff; padding: 2.5rem 0 2.2rem 0;">
 
   <!-- POP-UP -->
   <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-hidden="true">
