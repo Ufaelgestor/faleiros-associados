@@ -7,7 +7,8 @@
   "dev": "vite",
   "build": "vite build",
   "preview": "vite preview",
-  "ci:build": "GITHUB_ACTIONS=1 vite build"
+  "ci:build": "GITHUB_ACTIONS=1 vite build",
+  "builder": "python3 tools/make_webp.py && npm run build"
   },
   "devDependencies": {
     "vite": "^5.0.0"
