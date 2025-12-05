@@ -588,9 +588,8 @@
     const waPhone = '5562981310280';
     const baseText = 'Olá, gostaria de falar com um advogado sobre meu concurso.';
     const buildWaUrl = (source='site', context='') => {
-      const extras = `\nOrigem: ${source}\nContexto: ${context || 'n/d'}\nPágina: ${location.pathname}`;
       const intro = 'Olá, vi o site Faleiros Associados e quero ajuda.';
-      return `https://wa.me/${waPhone}?text=${encodeURIComponent(intro + '\n' + baseText + extras)}`;
+      return `https://wa.me/${waPhone}?text=${encodeURIComponent(intro + '\n' + baseText)}`;
     };
     document.querySelectorAll('[data-wa]').forEach(el => {
       const src = el.getAttribute('data-wa-source') || 'site';
