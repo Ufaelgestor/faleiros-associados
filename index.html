@@ -57,7 +57,6 @@
     fbq('init', '1085254989665116');
     fbq('track', 'PageView');
   </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1085254989665116&ev=PageView&noscript=1"/></noscript>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KGYG6RXV9L"></script>
   <script>
@@ -396,6 +395,7 @@
   </style>
 </head>
 <body>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1085254989665116&ev=PageView&noscript=1"/></noscript>
   <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
   <header>
     <a href="#inicio" class="brand" aria-label="Faleiros Associados - Início">
@@ -588,9 +588,8 @@
     const waPhone = '5562981310280';
     const baseText = 'Olá, gostaria de falar com um advogado sobre meu concurso.';
     const buildWaUrl = (source='site', context='') => {
-      const extras = `\nOrigem: ${source}\nContexto: ${context || 'n/d'}\nPágina: ${location.pathname}`;
       const intro = 'Olá, vi o site Faleiros Associados e quero ajuda.';
-      return `https://wa.me/${waPhone}?text=${encodeURIComponent(intro + '\n' + baseText + extras)}`;
+      return `https://wa.me/${waPhone}?text=${encodeURIComponent(intro + '\n' + baseText)}`;
     };
     document.querySelectorAll('[data-wa]').forEach(el => {
       const src = el.getAttribute('data-wa-source') || 'site';
@@ -635,8 +634,10 @@
         const tel = (document.getElementById('f-telefone')?.value || '').trim();
         const assunto = (document.getElementById('f-assunto')?.value || '').trim();
         const msg = (document.getElementById('f-mensagem')?.value || '').trim();
-        const ctx = `Formulário Web\nNome: ${nome || 'n/d'}\nEmail: ${email || 'n/d'}\nTelefone: ${tel || 'n/d'}\nAssunto: ${assunto || 'n/d'}\nMensagem: ${msg || 'n/d'}`;
-        const url = buildWaUrl('form', ctx);
+        
+        // Criar uma mensagem simplificada sem os campos extras
+        const formMessage = `Olá, vi o site Faleiros Associados e quero ajuda.\n\nNome: ${nome}\nEmail: ${email}\nTelefone: ${tel}\nAssunto: ${assunto}\nMensagem: ${msg}`;
+        const url = `https://wa.me/${waPhone}?text=${encodeURIComponent(formMessage)}`;
         window.open(url, '_blank', 'noopener');
       });
     })();
