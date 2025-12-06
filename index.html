@@ -223,35 +223,69 @@
   /* Responsivo para Áreas de Atuação (4 cards) */
   #atuacao .cards {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
   @media (max-width: 768px) {
     #atuacao .cards {
       grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
   }
   @media (min-width: 769px) and (max-width: 1024px) {
     #atuacao .cards {
       grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
     }
   }
   @media (min-width: 1025px) {
     #atuacao .cards {
       grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
     }
+  }
+
+  /* Áreas de Atuação cards específicos */
+  #atuacao .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+  }
+  
+  #atuacao .card h4 {
+    margin-bottom: 1rem;
+    color: var(--azul-escuro);
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+  
+  #atuacao .card p {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+  
+  #atuacao .card .btn {
+    width: 100%;
+    max-width: 100%;
+    min-width: auto;
   }
 
     .card {
       background: var(--cinza);
-      border-left: 4px solid var(--dourado);
+      border: 2px solid rgba(203, 175, 100, 0.2);
       padding: 2rem;
       border-radius: 16px;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       width: 100%;
       max-width: 480px;
       box-sizing: border-box;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
-    .card:hover { transform: translateY(-5px); }
+    .card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
 
     .cases {
       background: var(--azul-escuro);
@@ -262,7 +296,12 @@
   .cases .section-title { color: var(--dourado); }
   /* Melhor contraste dos cards na seção de casos */
   .cases .cards { margin-top: 2rem; }
-  .cases .card { background: var(--branco); color: var(--azul-escuro); border-left: 4px solid var(--dourado); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .cases .card { 
+    background: var(--branco); 
+    color: var(--azul-escuro); 
+    border: 2px solid rgba(203, 175, 100, 0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+  }
   .cases .card h4 { color: var(--azul-escuro); }
   .cases .card p { color: var(--azul-escuro); }
 
